@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>MindTrack 💛</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- LOGIN PAGE -->
+<div id="loginPage" class="container">
+    <h1>MindTrack 💛</h1>
+    <h2>Parent Login</h2>
+
+    <input type="text" id="username" placeholder="Enter username"><br><br>
+    <input type="password" id="password" placeholder="Enter password"><br><br>
+
+    <button onclick="login()">Login</button>
+</div>
+
+
+<!-- MAIN PAGE -->
+<div id="mainPage" class="container" style="display:none">
+
+    <h1>MindTrack 💛</h1>
+    <button onclick="logout()">Logout</button>
+
+    <h2>How are you feeling today?</h2>
+
+    <div class="emojis">
+        <span onclick="checkMood('happy')">😊</span>
+        <span onclick="checkMood('sad')">😢</span>
+        <span onclick="checkMood('angry')">😠</span>
+        <span onclick="checkMood('tired')">😴</span>
+        <span onclick="checkMood('okay')">🙂</span>
+        <span onclick="checkMood('exhausted')">😣</span>
+    </div>
+
+    <p id="message"></p>
+    <h3>your streak:<span id="streak">0</span> days🔥</h3>
+    <h3>Last 7 days mood:</h3>
+    <div id="history"></div>
+</div>
+
+<script src="script.js"></script>
+<script>
+// LOGIN + LOGOUT
+function login(){
+    let user = document.getElementById("username").value;
+    let pass = document.getElementById("password").value;
+
+    if(user==="parent" && pass==="1234"){
+        localStorage.setItem("loggedIn", "true");
+        document.getElementById("loginPage").style.display="none";
+        document.getElementById("mainPage").style.display="block";
+    }else{
+        alert("Wrong username or password");
+    }
+}
+
+function logout(){
+    localStorage.removeItem("loggedIn");
+    document.getElementById("loginPage").style.display="block";
+    document.getElementById("mainPage").style.display="none";
+}
+
+// Check login on page load
+if(localStorage.getItem("loggedIn") === "true"){
+    document.getElementById("loginPage").style.display="none";
+    document.getElementById("mainPage").style.display="block";
+}
+</script>
+
+</body>
+</html>
