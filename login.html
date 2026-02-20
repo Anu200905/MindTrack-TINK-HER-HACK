@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>MindTrack Login 💛</title>
+<style>
+body{
+  font-family: Arial;
+  text-align:center;
+  background:#f5f5f5;
+  padding-top:120px;
+}
+input{
+  padding:10px;
+  margin:10px;
+  width:200px;
+}
+button{
+  padding:10px 20px;
+}
+#error{
+  color:red;
+}
+</style>
+</head>
+<body>
+
+<h1>MindTrack Login 💛</h1>
+
+<input type="text" id="username" placeholder="Username"><br>
+<input type="password" id="password" placeholder="Password"><br>
+<button onclick="login()">Login</button>
+
+<p id="error"></p>
+
+<script>
+function login(){
+  let u = document.getElementById("username").value;
+  let p = document.getElementById("password").value;
+
+  if(u==="student" && p==="1234"){
+    localStorage.setItem("loggedIn","true");
+    window.location.href="index.html";
+  } else {
+    document.getElementById("error").innerText="Wrong username or password";
+  }
+}
+</script>
+
+</body>
+</html>
